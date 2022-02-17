@@ -45,7 +45,7 @@ public class menu {
 				}else if (selection.equals("5")){
 					createMember();
 				}else if (selection.equals("6")){
-					//deleteTeam();	
+					deleteMember();	
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -105,6 +105,12 @@ public class menu {
 		System.out.print("Enter team id of new member: ");
 		int teamId = Integer.parseInt(scanner.nextLine());
 		memberDao.createNewMember(firstName, lastName, teamId);
+	}
+	
+	private void deleteMember() throws SQLException {
+		System.out.println("Enter member id to delete:");
+		int id = Integer.parseInt(scanner.nextLine());
+		memberDao.deleteMemberById(id);
 	}
 
 }

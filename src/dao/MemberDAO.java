@@ -16,6 +16,7 @@ public class MemberDAO {
 	private final String GET_MEMBERS_BY_TEAM_ID_QUERY = "SELECT * FROM members WHERE team_id = ?";
 	private final String delete_members_by_team_id_query = "delete from members where team_id = ?";
 	private final String create_new_member_query = "insert into members(first_name, last_name, team_id) values(?,?,?)";
+	private final String delete_member_by_id_query = "delete from members where id = ?";
 
 	
 	public MemberDAO() {
@@ -44,6 +45,12 @@ public class MemberDAO {
 	public void deleteMembersByTeamId(int teamId) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(delete_members_by_team_id_query);
 		ps.setInt(1, teamId);
+		ps.executeUpdate();
+	}
+	
+	public void deleteMemberById(int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(delete_members_by_team_id_query);
+		ps.setInt(1, id);
 		ps.executeUpdate();
 	}
 
